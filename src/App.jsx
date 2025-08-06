@@ -6,7 +6,7 @@ import Footer from './Footer';
 import { useState, useEffect } from 'react';
 
 function App() {
-  const API_URL = 'http://localhost:3500/items'; // Optional server
+  const API_URL = 'http://localhost:3500/items'; 
   const defaultItems = [
     { id: 1, checked: false, item: 'Milk' },
     { id: 2, checked: true, item: 'Bread' },
@@ -19,7 +19,6 @@ function App() {
   const [fetchError, setFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Load data on app start
   useEffect(() => {
     const fetchItems = async () => {
       try {
@@ -44,10 +43,9 @@ function App() {
       }
     };
 
-    setTimeout(() => fetchItems(), 1500); // just to simulate loading
+    setTimeout(() => fetchItems(), 1500);
   }, []);
 
-  // Save to localStorage whenever items change
   useEffect(() => {
     localStorage.setItem('groceryList', JSON.stringify(items));
   }, [items]);
